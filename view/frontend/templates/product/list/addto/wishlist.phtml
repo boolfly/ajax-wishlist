@@ -1,0 +1,39 @@
+<?php
+/***********************************************************************
+ * *
+ *  *
+ *  * @copyright Copyright © Boolfly. All rights reserved.
+ *  * See COPYING.txt for license details.
+ *  * @author    info@boolfly.com
+ * *
+ */
+
+/** @var $block \Magento\Wishlist\Block\Catalog\Product\ProductList\Item\AddTo\Wishlist */
+$addToText = $block->escapeHtml(__('Add to Wish List'));
+$addedText = $block->escapeHtml(__('Added to Wish List'));
+?>
+<?php if ($block->getWishlistHelper()->isAllow()) : ?>
+    <span class="wrapper-action" data-role="wishlist-product" data-bind="scope: 'ajaxWishlist'">
+        <a href="#"
+           class="action towishlist"
+           title="<?= $addToText ?>"
+           aria-label="<?= $addToText ?>"
+           data-post='<?= /* @noEscape */ $block->getAddToWishlistParams($block->getProduct()) ?>'
+           data-product-id="<?= $block->getProduct()->getId();?>"
+           data-bind="event: {
+                mage_data_post_before_send: beforeSendAjaxEvent,
+                mage_data_post_done:  completeAjaxEvent
+           }, css: {'active': added($element)},
+              attr: {
+                title: added($element) ? '<?= $addedText ?>' : '<?= $addToText ?>',
+                'aria-label': added($element) ?  '<?= $addedText ?>' : '<?= $addToText ?>',
+              }"
+           role="button">
+            <span data-bind="attr: {
+                'data-product-id': '<?= $block->getProduct()->getId();?>'
+            }, text: added($element)? '<?= $addedText ?>' : '<?= $addToText ?>'">
+                <?= $addToText ?>
+            </span>
+        </a>
+    </span>
+<?php endif;?>

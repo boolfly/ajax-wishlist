@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ /************************************************************
+ * *
+ *  * Copyright © Boolfly. All rights reserved.
+ *  * See COPYING.txt for license details.
+ *  *
+ *  * @author    info@boolfly.com
+ * *  @project   Ajax Wishlist
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="view.addto.wishlist">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Boolfly_AjaxWishlist::product/view/addto/wishlist.phtml</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Framework\View\Element\Template" name="ajax.wishlist.js.block" template="Boolfly_AjaxWishlist::js.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

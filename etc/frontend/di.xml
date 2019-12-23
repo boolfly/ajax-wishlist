@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ /************************************************************
+ * *
+ *  * Copyright © Boolfly. All rights reserved.
+ *  * See COPYING.txt for license details.
+ *  *
+ *  * @author    info@boolfly.com
+ * *  @project   Ajax Wishlist
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Wishlist\Helper\Data">
+        <plugin name="magento_wishlist_helper_product" type="Boolfly\AjaxWishlist\Plugin\Wishlist\Helper\DataPlugin" />
+    </type>
+    <type name="Magento\Wishlist\CustomerData\Wishlist">
+        <plugin name="boolfly_wishlist_customer_data" type="Boolfly\AjaxWishlist\Plugin\Wishlist\CustomerData\WishlistPlugin" />
+    </type>
+    <type name="Magento\Wishlist\Controller\Index\Add">
+        <plugin name="after_controller_wishlist_add" type="Boolfly\AjaxWishlist\Plugin\ProductWishlistControllerPlugin" />
+    </type>
+    <type name="Magento\Wishlist\Controller\Index\Remove">
+        <plugin name="after_controller_wishlist_remove" type="Boolfly\AjaxWishlist\Plugin\ProductWishlistControllerPlugin" />
+    </type>
+</config>
